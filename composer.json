@@ -1,18 +1,19 @@
 {
-    "name": "GIT_USER_ID/GIT_REPO_ID",
+    "name": "astarlabs/bitcoin-php-api-client",
     "description": "",
+    "type": "library",
     "keywords": [
         "swagger",
         "php",
         "sdk",
         "api"
     ],
-    "homepage": "http://swagger.io",
+    "homepage": "https://www.astarlabs.com/",
     "license": "proprietary",
     "authors": [
         {
-            "name": "Swagger and contributors",
-            "homepage": "https://github.com/swagger-api/swagger-codegen"
+            "name": "Reginaldo Costa",
+            "homepage": "https://github.com/regcostajr"
         }
     ],
     "require": {
