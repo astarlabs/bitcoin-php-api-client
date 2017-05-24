@@ -26,12 +26,12 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Api;
+namespace AStar\Client\Api;
 
-use \Swagger\Client\ApiClient;
-use \Swagger\Client\ApiException;
-use \Swagger\Client\Configuration;
-use \Swagger\Client\ObjectSerializer;
+use \AStar\Client\ApiClient;
+use \AStar\Client\ApiException;
+use \AStar\Client\Configuration;
+use \AStar\Client\ObjectSerializer;
 
 /**
  * SearchApi Class Doc Comment
@@ -46,16 +46,16 @@ class SearchApi
     /**
      * API Client
      *
-     * @var \Swagger\Client\ApiClient instance of the ApiClient
+     * @var \AStar\Client\ApiClient instance of the ApiClient
      */
     protected $apiClient;
 
     /**
      * Constructor
      *
-     * @param \Swagger\Client\ApiClient|null $apiClient The api client to use
+     * @param \AStar\Client\ApiClient|null $apiClient The api client to use
      */
-    public function __construct(\Swagger\Client\ApiClient $apiClient = null)
+    public function __construct(\AStar\Client\ApiClient $apiClient = null)
     {
         if ($apiClient === null) {
             $apiClient = new ApiClient();
@@ -67,7 +67,7 @@ class SearchApi
     /**
      * Get API client
      *
-     * @return \Swagger\Client\ApiClient get the API client
+     * @return \AStar\Client\ApiClient get the API client
      */
     public function getApiClient()
     {
@@ -77,11 +77,11 @@ class SearchApi
     /**
      * Set the API client
      *
-     * @param \Swagger\Client\ApiClient $apiClient set the API client
+     * @param \AStar\Client\ApiClient $apiClient set the API client
      *
      * @return SearchApi
      */
-    public function setApiClient(\Swagger\Client\ApiClient $apiClient)
+    public function setApiClient(\AStar\Client\ApiClient $apiClient)
     {
         $this->apiClient = $apiClient;
         return $this;
@@ -97,8 +97,8 @@ class SearchApi
      * @param string $user API user name. (required)
      * @param string $pass API user password. (required)
      * @param int $id API id for blockchain transaction (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Transaction
+     * @throws \AStar\Client\ApiException on non-2xx response
+     * @return \AStar\Client\Model\Transaction
      */
     public function searchByAPIID($token, $account, $user, $pass, $id)
     {
@@ -116,8 +116,8 @@ class SearchApi
      * @param string $user API user name. (required)
      * @param string $pass API user password. (required)
      * @param int $id API id for blockchain transaction (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Transaction, HTTP status code, HTTP response headers (array of strings)
+     * @throws \AStar\Client\ApiException on non-2xx response
+     * @return array of \AStar\Client\Model\Transaction, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchByAPIIDWithHttpInfo($token, $account, $user, $pass, $id)
     {
@@ -188,15 +188,15 @@ class SearchApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Transaction',
+                '\AStar\Client\Model\Transaction',
                 '/search/registered/id'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Transaction', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\AStar\Client\Model\Transaction', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 0:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Transaction', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\AStar\Client\Model\Transaction', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -215,8 +215,8 @@ class SearchApi
      * @param string $user API user name. (required)
      * @param string $pass API user password. (required)
      * @param string $content file or string content. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Transaction
+     * @throws \AStar\Client\ApiException on non-2xx response
+     * @return \AStar\Client\Model\Transaction
      */
     public function searchByContent($token, $account, $user, $pass, $content)
     {
@@ -234,8 +234,8 @@ class SearchApi
      * @param string $user API user name. (required)
      * @param string $pass API user password. (required)
      * @param string $content file or string content. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Transaction, HTTP status code, HTTP response headers (array of strings)
+     * @throws \AStar\Client\ApiException on non-2xx response
+     * @return array of \AStar\Client\Model\Transaction, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchByContentWithHttpInfo($token, $account, $user, $pass, $content)
     {
@@ -306,15 +306,15 @@ class SearchApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Transaction',
+                '\AStar\Client\Model\Transaction',
                 '/search/registered/content'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Transaction', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\AStar\Client\Model\Transaction', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 0:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Transaction', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\AStar\Client\Model\Transaction', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -333,8 +333,8 @@ class SearchApi
      * @param string $user API user name. (required)
      * @param string $pass API user password. (required)
      * @param string $hash hash of content. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Transaction
+     * @throws \AStar\Client\ApiException on non-2xx response
+     * @return \AStar\Client\Model\Transaction
      */
     public function searchByHash($token, $account, $user, $pass, $hash)
     {
@@ -352,8 +352,8 @@ class SearchApi
      * @param string $user API user name. (required)
      * @param string $pass API user password. (required)
      * @param string $hash hash of content. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Transaction, HTTP status code, HTTP response headers (array of strings)
+     * @throws \AStar\Client\ApiException on non-2xx response
+     * @return array of \AStar\Client\Model\Transaction, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchByHashWithHttpInfo($token, $account, $user, $pass, $hash)
     {
@@ -424,15 +424,15 @@ class SearchApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Transaction',
+                '\AStar\Client\Model\Transaction',
                 '/search/registered/hash'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Transaction', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\AStar\Client\Model\Transaction', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 0:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Transaction', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\AStar\Client\Model\Transaction', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

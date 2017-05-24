@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client;
+namespace AStar\Client;
 
 /**
  * Configuration Class Doc Comment
@@ -88,7 +88,8 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'https://astarlabs.github.io/bitcoin-client-server/server-info.json';
+    
+    protected $host = null;
 
     /**
      * Timeout (second) of the HTTP request, by default set to 0, no timeout
@@ -190,6 +191,10 @@ class Configuration
     public function __construct()
     {
         $this->tempFolderPath = sys_get_temp_dir();
+
+        $pageValue = file_get_contents('https://astarlabs.github.io/bitcoin-client-server/server-info.json');
+        $jsonValue = json_decode($pageValue);
+        $this->setHost($jsonValue[0]->fulladdress);
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * SearchApiTest
  * PHP version 5
@@ -25,13 +26,13 @@
  * https://github.com/swagger-api/swagger-codegen
  * Please update the test case below to test the endpoint.
  */
+namespace AStar\Client;
+require "vendor/autoload.php";
 
-namespace Swagger\Client;
-
-use \Swagger\Client\Configuration;
-use \Swagger\Client\ApiClient;
-use \Swagger\Client\ApiException;
-use \Swagger\Client\ObjectSerializer;
+use \AStar\Client\Configuration;
+use \AStar\Client\ApiClient;
+use \AStar\Client\ApiException;
+use \AStar\Client\ObjectSerializer;
 
 /**
  * SearchApiTest Class Doc Comment
@@ -82,9 +83,18 @@ class SearchApiTest extends \PHPUnit_Framework_TestCase
      * Get transaction informations by API ID.
      *
      */
-    public function testSearchByAPIID()
-    {
+    public function testSearchByAPIID() {
+        $api = new Api\SearchApi();
+        
+        $token = new Token();
+        $tokenParameter = $token->sign("YOUR PRIVATE KEY");
 
+        $account = "2";
+        $user  = "test";
+        $pass = "test";
+        $id = "243";
+        $response = $api->searchByAPIID($tokenParameter, $account, $user, $pass, $id);
+        print_r( $response);
     }
 
     /**

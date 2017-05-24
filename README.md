@@ -57,7 +57,7 @@ Please follow the [installation procedure](#installation--usage) and then run th
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SearchApi();
+$api_instance = new AStar\Client\Api\SearchApi();
 $token = "token_example"; // string | a signed JWT token with the company privatekey.
 $account = 56; // int | API ID for Account where the coins must be spend.
 $user = "user_example"; // string | API user name.

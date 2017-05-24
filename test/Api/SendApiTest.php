@@ -26,12 +26,12 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace Swagger\Client;
+namespace AStar\Client;
 
-use \Swagger\Client\Configuration;
-use \Swagger\Client\ApiClient;
-use \Swagger\Client\ApiException;
-use \Swagger\Client\ObjectSerializer;
+use \AStar\Client\Configuration;
+use \AStar\Client\ApiClient;
+use \AStar\Client\ApiException;
+use \AStar\Client\ObjectSerializer;
 
 /**
  * SendApiTest Class Doc Comment

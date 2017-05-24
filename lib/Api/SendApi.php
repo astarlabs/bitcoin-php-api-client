@@ -26,12 +26,12 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Api;
+namespace AStar\Client\Api;
 
-use \Swagger\Client\ApiClient;
-use \Swagger\Client\ApiException;
-use \Swagger\Client\Configuration;
-use \Swagger\Client\ObjectSerializer;
+use \AStar\Client\ApiClient;
+use \AStar\Client\ApiException;
+use \AStar\Client\Configuration;
+use \AStar\Client\ObjectSerializer;
 
 /**
  * SendApi Class Doc Comment
@@ -46,16 +46,16 @@ class SendApi
     /**
      * API Client
      *
-     * @var \Swagger\Client\ApiClient instance of the ApiClient
+     * @var \AStar\Client\ApiClient instance of the ApiClient
      */
     protected $apiClient;
 
     /**
      * Constructor
      *
-     * @param \Swagger\Client\ApiClient|null $apiClient The api client to use
+     * @param \AStar\Client\ApiClient|null $apiClient The api client to use
      */
-    public function __construct(\Swagger\Client\ApiClient $apiClient = null)
+    public function __construct(\AStar\Client\ApiClient $apiClient = null)
     {
         if ($apiClient === null) {
             $apiClient = new ApiClient();
@@ -67,7 +67,7 @@ class SendApi
     /**
      * Get API client
      *
-     * @return \Swagger\Client\ApiClient get the API client
+     * @return \AStar\Client\ApiClient get the API client
      */
     public function getApiClient()
     {
@@ -77,11 +77,11 @@ class SendApi
     /**
      * Set the API client
      *
-     * @param \Swagger\Client\ApiClient $apiClient set the API client
+     * @param \AStar\Client\ApiClient $apiClient set the API client
      *
      * @return SendApi
      */
-    public function setApiClient(\Swagger\Client\ApiClient $apiClient)
+    public function setApiClient(\AStar\Client\ApiClient $apiClient)
     {
         $this->apiClient = $apiClient;
         return $this;
@@ -99,8 +99,8 @@ class SendApi
      * @param string $base64 base64 encoded file. (required)
      * @param string $coin the coin name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\SingleResult
+     * @throws \AStar\Client\ApiException on non-2xx response
+     * @return \AStar\Client\Model\SingleResult
      */
     public function sendFile($token, $account, $user, $pass, $base64, $coin, $test)
     {
@@ -120,8 +120,8 @@ class SendApi
      * @param string $base64 base64 encoded file. (required)
      * @param string $coin the coin name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\SingleResult, HTTP status code, HTTP response headers (array of strings)
+     * @throws \AStar\Client\ApiException on non-2xx response
+     * @return array of \AStar\Client\Model\SingleResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendFileWithHttpInfo($token, $account, $user, $pass, $base64, $coin, $test)
     {
@@ -208,15 +208,15 @@ class SendApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\SingleResult',
+                '\AStar\Client\Model\SingleResult',
                 '/send/opreturn/base64'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\SingleResult', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\AStar\Client\Model\SingleResult', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 0:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\SingleResult', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\AStar\Client\Model\SingleResult', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -237,8 +237,8 @@ class SendApi
      * @param string $hash hash to send. (required)
      * @param string $coin the coin name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\SingleResult
+     * @throws \AStar\Client\ApiException on non-2xx response
+     * @return \AStar\Client\Model\SingleResult
      */
     public function sendHash($token, $account, $user, $pass, $hash, $coin, $test)
     {
@@ -258,8 +258,8 @@ class SendApi
      * @param string $hash hash to send. (required)
      * @param string $coin the coin name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\SingleResult, HTTP status code, HTTP response headers (array of strings)
+     * @throws \AStar\Client\ApiException on non-2xx response
+     * @return array of \AStar\Client\Model\SingleResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendHashWithHttpInfo($token, $account, $user, $pass, $hash, $coin, $test)
     {
@@ -346,15 +346,15 @@ class SendApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\SingleResult',
+                '\AStar\Client\Model\SingleResult',
                 '/send/opreturn/hash'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\SingleResult', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\AStar\Client\Model\SingleResult', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 0:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\SingleResult', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\AStar\Client\Model\SingleResult', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -376,8 +376,8 @@ class SendApi
      * @param float $amount Amount to send (required)
      * @param string $coin the coin name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\SingleResult
+     * @throws \AStar\Client\ApiException on non-2xx response
+     * @return \AStar\Client\Model\SingleResult
      */
     public function sendPayAddress($token, $account, $user, $pass, $address, $amount, $coin, $test)
     {
@@ -398,8 +398,8 @@ class SendApi
      * @param float $amount Amount to send (required)
      * @param string $coin the coin name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\SingleResult, HTTP status code, HTTP response headers (array of strings)
+     * @throws \AStar\Client\ApiException on non-2xx response
+     * @return array of \AStar\Client\Model\SingleResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendPayAddressWithHttpInfo($token, $account, $user, $pass, $address, $amount, $coin, $test)
     {
@@ -494,15 +494,15 @@ class SendApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\SingleResult',
+                '\AStar\Client\Model\SingleResult',
                 '/send/payaddress'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\SingleResult', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\AStar\Client\Model\SingleResult', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 0:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\SingleResult', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\AStar\Client\Model\SingleResult', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -523,8 +523,8 @@ class SendApi
      * @param string $string string to send. (required)
      * @param string $coin the coin name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\SingleResult
+     * @throws \AStar\Client\ApiException on non-2xx response
+     * @return \AStar\Client\Model\SingleResult
      */
     public function sendString($token, $account, $user, $pass, $string, $coin, $test)
     {
@@ -544,8 +544,8 @@ class SendApi
      * @param string $string string to send. (required)
      * @param string $coin the coin name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\SingleResult, HTTP status code, HTTP response headers (array of strings)
+     * @throws \AStar\Client\ApiException on non-2xx response
+     * @return array of \AStar\Client\Model\SingleResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendStringWithHttpInfo($token, $account, $user, $pass, $string, $coin, $test)
     {
@@ -632,15 +632,15 @@ class SendApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\SingleResult',
+                '\AStar\Client\Model\SingleResult',
                 '/send/opreturn/string'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\SingleResult', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\AStar\Client\Model\SingleResult', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 0:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\SingleResult', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\AStar\Client\Model\SingleResult', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client;
+namespace AStar\Client;
 
 /**
  * ApiClient Class Doc Comment
