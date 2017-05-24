@@ -53,14 +53,16 @@ Please follow the [installation procedure](#installation--usage) and then run th
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new AStar\Client\Api\SearchApi();
-$token = "token_example"; // string | a signed JWT token with the company privatekey.
+
+$token = new AStar\Client\Token();
+$tokenParameter = $token->sign("YOUR PRIVATE KEY"); // string | a signed JWT token with the company privatekey.
 $account = 56; // int | API ID for Account where the coins must be spend.
 $user = "user_example"; // string | API user name.
 $pass = "pass_example"; // string | API user password.
 $id = 56; // int | API id for blockchain transaction
 
 try {
-    $result = $api_instance->searchByAPIID($token, $account, $user, $pass, $id);
+    $result = $api_instance->searchByAPIID($tokenParameter, $account, $user, $pass, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SearchApi->searchByAPIID: ', $e->getMessage(), PHP_EOL;
