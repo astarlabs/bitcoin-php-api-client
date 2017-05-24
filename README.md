@@ -71,7 +71,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://dev.astar.tech:8085/v2*
+All URIs are relative to fulladdress parameter: [server-info.json](https://github.com/astarlabs/bitcoin-client-server/blob/master/server-info.json)
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
