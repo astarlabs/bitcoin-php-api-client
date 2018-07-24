@@ -27,7 +27,8 @@ declare(strict_types=1);
  * Please update the test case below to test the endpoint.
  */
 namespace AStar\Client;
-require "vendor/autoload.php";
+//require "vendor/autoload.php";
+require "../autoload.php";
 
 use \AStar\Client\Configuration;
 use \AStar\Client\ApiClient;
