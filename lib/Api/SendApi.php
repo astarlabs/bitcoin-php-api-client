@@ -93,37 +93,39 @@ class SendApi
      * Send file hash to bitcoin blockchain
      *
      * @param string $token a signed JWT token with the company privatekey. (required)
-     * @param int $account API ID for Account where the coins must be spend. (required)
+     * @param int $account API ID for Account where the blockchainNetworks must be spend. (required)
      * @param string $user API user name. (required)
      * @param string $pass API user password. (required)
      * @param string $base64 base64 encoded file. (required)
-     * @param string $coin the coin name - bitcoin/litecoin. (required)
+     * @param string $blockchainNetwork the blockchainNetwork name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
+     * @param bool $isForce force to register param
      * @throws \AStar\Client\ApiException on non-2xx response
      * @return \AStar\Client\Model\SingleResult
      */
-    public function sendFile($token, $account, $user, $pass, $base64, $coin, $test)
+    public function sendFile($token, $account, $user, $pass, $base64, $blockchainNetwork, $test, $isForce)
     {
-        list($response) = $this->sendFileWithHttpInfo($token, $account, $user, $pass, $base64, $coin, $test);
+        list($response) = $this->sendFileWithHttpInfo($token, $account, $user, $pass, $base64, $blockchainNetwork, $test, $isForce);
         return $response;
     }
 
     /**
      * Operation sendFileWithHttpInfo
-     *
-     * Send file hash to bitcoin blockchain
+     * Update to v2.0.0
+     * 
      *
      * @param string $token a signed JWT token with the company privatekey. (required)
      * @param int $account API ID for Account where the coins must be spend. (required)
      * @param string $user API user name. (required)
      * @param string $pass API user password. (required)
      * @param string $base64 base64 encoded file. (required)
-     * @param string $coin the coin name - bitcoin/litecoin. (required)
+     * @param string $blockchainNetwork the blockchainNetwork name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
+     * @param bool $isForce re-register file if isForce is true
      * @throws \AStar\Client\ApiException on non-2xx response
      * @return array of \AStar\Client\Model\SingleResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendFileWithHttpInfo($token, $account, $user, $pass, $base64, $coin, $test)
+    public function sendFileWithHttpInfo($token, $account, $user, $pass, $base64, $blockchainNetwork, $test, $isForce)
     {
         // verify the required parameter 'token' is set
         if ($token === null) {
@@ -145,14 +147,16 @@ class SendApi
         if ($base64 === null) {
             throw new \InvalidArgumentException('Missing the required parameter $base64 when calling sendFile');
         }
-        // verify the required parameter 'coin' is set
-        if ($coin === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $coin when calling sendFile');
+        // verify the required parameter 'blockchainNetwork' is set
+        if ($blockchainNetwork === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $blockchainNetwork when calling sendFile');
         }
         // verify the required parameter 'test' is set
         if ($test === null) {
             throw new \InvalidArgumentException('Missing the required parameter $test when calling sendFile');
         }
+
+
         // parse inputs
         $resourcePath = "/send/opreturn/base64";
         $httpBody = '';
@@ -186,12 +190,16 @@ class SendApi
             $formParams['base64'] = $this->apiClient->getSerializer()->toFormValue($base64);
         }
         // form params
-        if ($coin !== null) {
-            $formParams['coin'] = $this->apiClient->getSerializer()->toFormValue($coin);
+        if ($blockchainNetwork !== null) {
+            $formParams['blockchainNetwork'] = $this->apiClient->getSerializer()->toFormValue($blockchainNetwork);
         }
         // form params
         if ($test !== null) {
             $formParams['test'] = $this->apiClient->getSerializer()->toFormValue($test);
+        }
+
+        if($isForce !== null) {
+            $formParams["force"] = $this->apiClient->getSerializer()->toFormValue($isForce === null ? false : $isForce);
         }
         
         // for model (json/xml)
@@ -227,41 +235,41 @@ class SendApi
 
     /**
      * Operation sendHash
-     *
-     * Send hash to bitcoin blockchain
+     * Update to v.2.0.0
      *
      * @param string $token a signed JWT token with the company privatekey. (required)
-     * @param int $account API ID for Account where the coins must be spend. (required)
+     * @param int $account API ID for Account where the blockchainNetworks must be spend. (required)
      * @param string $user API user name. (required)
      * @param string $pass API user password. (required)
      * @param string $hash hash to send. (required)
-     * @param string $coin the coin name - bitcoin/litecoin. (required)
+     * @param string $blockchainNetwork the blockchainNetwork name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
+     * @param bool $isForce re-register file if isForce is true
      * @throws \AStar\Client\ApiException on non-2xx response
      * @return \AStar\Client\Model\SingleResult
      */
-    public function sendHash($token, $account, $user, $pass, $hash, $coin, $test)
+    public function sendHash($token, $account, $user, $pass, $hash, $blockchainNetwork, $test, $isForce)
     {
-        list($response) = $this->sendHashWithHttpInfo($token, $account, $user, $pass, $hash, $coin, $test);
+        list($response) = $this->sendHashWithHttpInfo($token, $account, $user, $pass, $hash, $blockchainNetwork, $test, $isForce);
         return $response;
     }
 
     /**
      * Operation sendHashWithHttpInfo
-     *
-     * Send hash to bitcoin blockchain
+     * Update to v2.0.0
      *
      * @param string $token a signed JWT token with the company privatekey. (required)
-     * @param int $account API ID for Account where the coins must be spend. (required)
+     * @param int $account API ID for Account where the blockchainNetworks must be spend. (required)
      * @param string $user API user name. (required)
      * @param string $pass API user password. (required)
      * @param string $hash hash to send. (required)
-     * @param string $coin the coin name - bitcoin/litecoin. (required)
+     * @param string $blockchainNetwork the blockchainNetwork name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
+     * @param bool $isForce for force register
      * @throws \AStar\Client\ApiException on non-2xx response
      * @return array of \AStar\Client\Model\SingleResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendHashWithHttpInfo($token, $account, $user, $pass, $hash, $coin, $test)
+    public function sendHashWithHttpInfo($token, $account, $user, $pass, $hash, $blockchainNetwork, $test, $isForce)
     {
         // verify the required parameter 'token' is set
         if ($token === null) {
@@ -283,14 +291,15 @@ class SendApi
         if ($hash === null) {
             throw new \InvalidArgumentException('Missing the required parameter $hash when calling sendHash');
         }
-        // verify the required parameter 'coin' is set
-        if ($coin === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $coin when calling sendHash');
+        // verify the required parameter 'blockchainNetwork' is set
+        if ($blockchainNetwork === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $blockchainNetwork when calling sendHash');
         }
         // verify the required parameter 'test' is set
         if ($test === null) {
             throw new \InvalidArgumentException('Missing the required parameter $test when calling sendHash');
         }
+
         // parse inputs
         $resourcePath = "/send/opreturn/hash";
         $httpBody = '';
@@ -324,12 +333,16 @@ class SendApi
             $formParams['hash'] = $this->apiClient->getSerializer()->toFormValue($hash);
         }
         // form params
-        if ($coin !== null) {
-            $formParams['coin'] = $this->apiClient->getSerializer()->toFormValue($coin);
+        if ($blockchainNetwork !== null) {
+            $formParams['blockchainNetwork'] = $this->apiClient->getSerializer()->toFormValue($blockchainNetwork);
         }
         // form params
         if ($test !== null) {
             $formParams['test'] = $this->apiClient->getSerializer()->toFormValue($test);
+        }
+        //form params
+        if($isForce !== null) {
+            $formParams["force"] = $this->apiClient->getSerializer()->toFormValue($isForce === null ? false : $isForce);
         }
         
         // for model (json/xml)
@@ -369,19 +382,19 @@ class SendApi
      * Send a value for address
      *
      * @param string $token a signed JWT token with the company privatekey. (required)
-     * @param int $account API ID for Account where the coins must be spend. (required)
+     * @param int $account API ID for Account where the blockchainNetwors must be spend. (required)
      * @param string $user API user name. (required)
      * @param string $pass API user password. (required)
      * @param string $address Address to send the amount. (required)
      * @param float $amount Amount to send (required)
-     * @param string $coin the coin name - bitcoin/litecoin. (required)
+     * @param string $blockchainNetwork the blockchainNetwork name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
      * @throws \AStar\Client\ApiException on non-2xx response
      * @return \AStar\Client\Model\SingleResult
      */
-    public function sendPayAddress($token, $account, $user, $pass, $address, $amount, $coin, $test)
+    public function sendPayAddress($token, $account, $user, $pass, $address, $amount, $blockchainNetwork, $test)
     {
-        list($response) = $this->sendPayAddressWithHttpInfo($token, $account, $user, $pass, $address, $amount, $coin, $test);
+        list($response) = $this->sendPayAddressWithHttpInfo($token, $account, $user, $pass, $address, $amount, $blockchainNetwork, $test);
         return $response;
     }
 
@@ -391,17 +404,17 @@ class SendApi
      * Send a value for address
      *
      * @param string $token a signed JWT token with the company privatekey. (required)
-     * @param int $account API ID for Account where the coins must be spend. (required)
+     * @param int $account API ID for Account where the blockchainNetwors must be spend. (required)
      * @param string $user API user name. (required)
      * @param string $pass API user password. (required)
      * @param string $address Address to send the amount. (required)
      * @param float $amount Amount to send (required)
-     * @param string $coin the coin name - bitcoin/litecoin. (required)
+     * @param string $blockchainNetwork the blockchainNetwork name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
      * @throws \AStar\Client\ApiException on non-2xx response
      * @return array of \AStar\Client\Model\SingleResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendPayAddressWithHttpInfo($token, $account, $user, $pass, $address, $amount, $coin, $test)
+    public function sendPayAddressWithHttpInfo($token, $account, $user, $pass, $address, $amount, $blockchainNetwork, $test)
     {
         // verify the required parameter 'token' is set
         if ($token === null) {
@@ -427,9 +440,9 @@ class SendApi
         if ($amount === null) {
             throw new \InvalidArgumentException('Missing the required parameter $amount when calling sendPayAddress');
         }
-        // verify the required parameter 'coin' is set
-        if ($coin === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $coin when calling sendPayAddress');
+        // verify the required parameter 'blockchainNetwork' is set
+        if ($blockchainNetwork === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $blockchainNetwork when calling sendPayAddress');
         }
         // verify the required parameter 'test' is set
         if ($test === null) {
@@ -472,8 +485,8 @@ class SendApi
             $formParams['amount'] = $this->apiClient->getSerializer()->toFormValue($amount);
         }
         // form params
-        if ($coin !== null) {
-            $formParams['coin'] = $this->apiClient->getSerializer()->toFormValue($coin);
+        if ($blockchainNetwork !== null) {
+            $formParams['blockchainNetwork'] = $this->apiClient->getSerializer()->toFormValue($blockchainNetwork);
         }
         // form params
         if ($test !== null) {
@@ -513,22 +526,22 @@ class SendApi
 
     /**
      * Operation sendString
-     *
-     * Send string to bitcoin blockchain
+     * Update v2.0.0
      *
      * @param string $token a signed JWT token with the company privatekey. (required)
-     * @param int $account API ID for Account where the coins must be spend. (required)
+     * @param int $account API ID for Account where the blockchainNetworks must be spend. (required)
      * @param string $user API user name. (required)
      * @param string $pass API user password. (required)
      * @param string $string string to send. (required)
-     * @param string $coin the coin name - bitcoin/litecoin. (required)
+     * @param string $blockchainNetwork the blockchainNetwork name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
+     * @param bool $isForce force to register
      * @throws \AStar\Client\ApiException on non-2xx response
      * @return \AStar\Client\Model\SingleResult
      */
-    public function sendString($token, $account, $user, $pass, $string, $coin, $test)
+    public function sendString($token, $account, $user, $pass, $string, $blockchainNetwork, $test, $isForce)
     {
-        list($response) = $this->sendStringWithHttpInfo($token, $account, $user, $pass, $string, $coin, $test);
+        list($response) = $this->sendStringWithHttpInfo($token, $account, $user, $pass, $string, $blockchainNetwork, $test, $isForce);
         return $response;
     }
 
@@ -538,16 +551,17 @@ class SendApi
      * Send string to bitcoin blockchain
      *
      * @param string $token a signed JWT token with the company privatekey. (required)
-     * @param int $account API ID for Account where the coins must be spend. (required)
+     * @param int $account API ID for Account where the blockchainNetworks must be spend. (required)
      * @param string $user API user name. (required)
      * @param string $pass API user password. (required)
      * @param string $string string to send. (required)
-     * @param string $coin the coin name - bitcoin/litecoin. (required)
+     * @param string $blockchainNetwork the blockchainNetwork name - bitcoin/litecoin. (required)
      * @param int $test if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. (required)
+     * @param bool $isforce force register
      * @throws \AStar\Client\ApiException on non-2xx response
      * @return array of \AStar\Client\Model\SingleResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendStringWithHttpInfo($token, $account, $user, $pass, $string, $coin, $test)
+    public function sendStringWithHttpInfo($token, $account, $user, $pass, $string, $blockchainNetwork, $test, $isForce)
     {
         // verify the required parameter 'token' is set
         if ($token === null) {
@@ -569,9 +583,9 @@ class SendApi
         if ($string === null) {
             throw new \InvalidArgumentException('Missing the required parameter $string when calling sendString');
         }
-        // verify the required parameter 'coin' is set
-        if ($coin === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $coin when calling sendString');
+        // verify the required parameter 'blockchainNetwork' is set
+        if ($blockchainNetwork === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $blockchainNetwork when calling sendString');
         }
         // verify the required parameter 'test' is set
         if ($test === null) {
@@ -610,13 +624,18 @@ class SendApi
             $formParams['string'] = $this->apiClient->getSerializer()->toFormValue($string);
         }
         // form params
-        if ($coin !== null) {
-            $formParams['coin'] = $this->apiClient->getSerializer()->toFormValue($coin);
+        if ($blockchainNetwork !== null) {
+            $formParams['blockchainNetwork'] = $this->apiClient->getSerializer()->toFormValue($blockchainNetwork);
         }
         // form params
         if ($test !== null) {
             $formParams['test'] = $this->apiClient->getSerializer()->toFormValue($test);
         }
+        //form params
+        if($isForce !== null) {
+            $formParams["force"] = $this->apiClient->getSerializer()->toFormValue($isForce === null ? false : $isForce);
+        }
+        
         
         // for model (json/xml)
         if (isset($_tempBody)) {
