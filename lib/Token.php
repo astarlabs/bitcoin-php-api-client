@@ -2,6 +2,8 @@
 
 namespace AStar\Client;
 
+require_once __DIR__ . '\autoload.php';
+
 use \phpseclib\Crypt;
 use \Firebase\JWT\JWT;
 

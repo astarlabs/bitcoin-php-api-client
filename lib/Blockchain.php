@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '\autoload.php';
 namespace AStar\Client;
+
 
 use AStar\Client\Token as token;
 use AStar\Client\Api as api;

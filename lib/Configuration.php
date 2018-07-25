@@ -192,7 +192,7 @@ class Configuration
     {
         $this->tempFolderPath = sys_get_temp_dir();
 
-        $pageValue = file_get_contents('https://astarlabs.github.io/bitcoin-client-server/server-info.json');
+        $pageValue = file_get_contents('http://astarlabs.github.io/bitcoin-client-server/server-info.json');
         $jsonValue = json_decode($pageValue);
         $this->setHost($jsonValue[0]->fulladdress);
     }
