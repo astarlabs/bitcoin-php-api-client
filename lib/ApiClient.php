@@ -159,6 +159,7 @@ class ApiClient
         $url = $this->config->getHost() . $resourcePath;
 
         $curl = curl_init();
+
         // set timeout, if needed
         if ($this->config->getCurlTimeout() !== 0) {
             curl_setopt($curl, CURLOPT_TIMEOUT, $this->config->getCurlTimeout());
@@ -173,11 +174,17 @@ class ApiClient
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
+        
+        //Alterado para fora do IF, pois com isso, não dependemos de um certificado SSL para realizar as requisições
+        //25/08/2018 - JC
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
         // disable SSL verification, if needed
         if ($this->config->getSSLVerification() === false) {
-            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+            //curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
         }
+        
 
         if ($this->config->getCurlProxyHost()) {
             curl_setopt($curl, CURLOPT_PROXY, $this->config->getCurlProxyHost());
